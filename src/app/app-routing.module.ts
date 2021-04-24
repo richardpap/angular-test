@@ -5,29 +5,22 @@ import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes = [
   {
-      path: 'movies',
-      component: ListComponent
+    path: 'movies',
+    component: ListComponent,
   },
   {
-      path: 'details/:id',
-      component: DetailsComponent
+    path: 'details/:id',
+    component: DetailsComponent,
   },
   {
-      path: '',
-      pathMatch: 'full',
-      redirectTo: '/movies'
-  }
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/movies',
+  },
 ];
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot(appRoutes, { useHash: true })
-    ],
-    exports: [
-        RouterModule
-    ]
+  imports: [RouterModule.forRoot(appRoutes, { useHash: true })],
+  exports: [RouterModule],
 })
-
-export class AppRoutingModule { }
-
-
+export class AppRoutingModule {}

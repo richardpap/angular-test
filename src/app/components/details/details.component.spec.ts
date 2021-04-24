@@ -5,7 +5,9 @@ import { ApiService } from 'src/app/services/api.service';
 import { DetailsComponent } from './details.component';
 
 class MockApiService {
-  getDetailsData(id: string | number): Observable<any> { return new BehaviorSubject<any>(null);}
+  getDetailsData(id: string | number): Observable<any> {
+    return new BehaviorSubject<any>(null);
+  }
 }
 
 describe('DetailsComponent', () => {
@@ -15,13 +17,10 @@ describe('DetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DetailsComponent ],
-      providers: [
-        { provide: ApiService, useClass: MockApiService }
-      ],
-      schemas: [ NO_ERRORS_SCHEMA ]
-    })
-    .compileComponents();
+      declarations: [DetailsComponent],
+      providers: [{ provide: ApiService, useClass: MockApiService }],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -31,15 +30,15 @@ describe('DetailsComponent', () => {
     fixture.detectChanges();
   });
 
-
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-
   it('should call apiservice.getDetailsData() on ngOnInit', () => {
     // given
-    const apiServiceStub = spyOn(apiService, 'getDetailsData').and.returnValue(new BehaviorSubject([]));
+    const apiServiceStub = spyOn(apiService, 'getDetailsData').and.returnValue(
+      new BehaviorSubject([])
+    );
     // when
     component.ngOnInit();
     // then

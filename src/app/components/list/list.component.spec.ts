@@ -7,11 +7,15 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Observable, BehaviorSubject } from 'rxjs';
 
 class MockRouter {
-  navigateByUrl(url: string): string { return url }
+  navigateByUrl(url: string): string {
+    return url;
+  }
 }
 
 class MockApiService {
-  getListData(): Observable<any> { return new BehaviorSubject<any>(null) }
+  getListData(): Observable<any> {
+    return new BehaviorSubject<any>(null);
+  }
 }
 
 describe('ListComponent', () => {
@@ -22,19 +26,15 @@ describe('ListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListComponent ],
-      imports: [
-        RouterTestingModule
-      ],
+      declarations: [ListComponent],
+      imports: [RouterTestingModule],
       providers: [
         { provide: ApiService, useClass: MockApiService },
-        { provide: Router, useClass: MockRouter }
+        { provide: Router, useClass: MockRouter },
       ],
-      schemas: [ NO_ERRORS_SCHEMA ]
-    })
-    .compileComponents();
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
   });
-
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ListComponent);
@@ -44,15 +44,15 @@ describe('ListComponent', () => {
     fixture.detectChanges();
   });
 
-
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-
   it('should call apiservice.getListData() on ngOnInit', () => {
     // given
-    const apiServiceStub = spyOn(apiService, 'getListData').and.returnValue(new BehaviorSubject([]));
+    const apiServiceStub = spyOn(apiService, 'getListData').and.returnValue(
+      new BehaviorSubject([])
+    );
     // when
     component.ngOnInit();
     // then
@@ -60,8 +60,7 @@ describe('ListComponent', () => {
     expect(apiServiceStub).toHaveBeenCalledTimes(1);
   });
 
-
-  it('should call showDetailsPage() in case of button click', async() => {
+  it('should call showDetailsPage() in case of button click', async () => {
     // given
     const button = fixture.debugElement.nativeElement.querySelector('button');
     const selectedId = 1;
@@ -69,22 +68,21 @@ describe('ListComponent', () => {
     // when
     button.click();
     // then
-    fixture.whenStable().then(() => {  
+    fixture.whenStable().then(() => {
       expect(clickEvent).toHaveBeenCalled();
       expect(clickEvent).toHaveBeenCalledTimes(1);
       expect(clickEvent).toHaveBeenCalledWith(selectedId);
     });
   });
 
-
-  it('should call router.navigateByUrl() when component.showDetailsPage() is called with id', async() => {
+  it('should call router.navigateByUrl() when component.showDetailsPage() is called with id', async () => {
     // given
     const selectedId = 1;
     const routerStub = spyOn(router, 'navigateByUrl');
     // when
     component.showDetailsPage(selectedId);
     // then
-    fixture.whenStable().then(() => {  
+    fixture.whenStable().then(() => {
       expect(routerStub).toHaveBeenCalled();
       expect(routerStub).toHaveBeenCalledTimes(1);
       expect(routerStub).toHaveBeenCalledWith(`/details/${selectedId}`);
