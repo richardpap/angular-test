@@ -13,9 +13,7 @@ export class ListComponent implements OnInit {
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
-    this.apiService.getListData().subscribe((res: any) => {
-      console.log('Hello world', res);
-    });
+    this.apiService.getListData();
   }
 
   showDetailsPage(id: number): void {

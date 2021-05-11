@@ -50,9 +50,7 @@ describe('ListComponent', () => {
 
   it('should call apiservice.getListData() on ngOnInit', () => {
     // given
-    const apiServiceStub = spyOn(apiService, 'getListData').and.returnValue(
-      new BehaviorSubject([])
-    );
+    const apiServiceStub = spyOn(apiService, 'getListData');
     // when
     component.ngOnInit();
     // then

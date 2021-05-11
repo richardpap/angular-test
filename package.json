@@ -8,12 +8,11 @@
     "test": "ng test --watch=false --code-coverage --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "validate": "pretty-quick --staged && ng lint && ng test"
+    "validate": "pretty-quick --staged && ng test"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run validate",
-      "pre-push": "ng build --aot true"
+      "pre-commit": "npm run validate"
     }
   },
   "private": true,

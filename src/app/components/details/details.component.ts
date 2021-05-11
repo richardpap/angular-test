@@ -12,8 +12,6 @@ export class DetailsComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.apiService.getDetailsData(1).subscribe((res: any) => {
-      console.log('Hello world', res);
-    });
+    this.apiService.getDetailsData(1);
   }
 }

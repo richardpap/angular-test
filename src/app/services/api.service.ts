@@ -8,11 +8,7 @@ import { Observable } from 'rxjs';
 export class ApiService {
   constructor(private httpClient: HttpClient) {}
 
-  getListData(): Observable<any> {
-    return this.httpClient.get('your/url');
-  }
+  getListData() {}
 
-  getDetailsData(id: string | number): Observable<any> {
-    return this.httpClient.get('your/url');
-  }
+  getDetailsData(id: string | number) {}
 }

@@ -36,9 +36,7 @@ describe('DetailsComponent', () => {
 
   it('should call apiservice.getDetailsData() on ngOnInit', () => {
     // given
-    const apiServiceStub = spyOn(apiService, 'getDetailsData').and.returnValue(
-      new BehaviorSubject([])
-    );
+    const apiServiceStub = spyOn(apiService, 'getDetailsData');
     // when
     component.ngOnInit();
     // then
